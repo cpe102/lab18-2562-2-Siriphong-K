@@ -9,6 +9,11 @@ using namespace std;
 
 struct student{
 	//Define struct student with four member (name ,id , gender, gpa);
+	string name;
+	int id;
+	double gpa;
+	char gender;
+	vector<string> name_list;
 };
 
 struct course{
@@ -56,9 +61,8 @@ int main(){
 	
 	while(getline(student_file,textline)){
 		student s; 
-	
 		//Assign value to the members of struct s;
-	
+		
 		allstudents.push_back(s); 		
 	}
 	
@@ -77,6 +81,7 @@ int main(){
 				state = 3;
 			}else{
 				//Append lecture_list;
+				allcourses[allcourses.size()-1].lecture_list.push_back(textline);
 			}			
 		}else{
 			if(textline == "---------------------------------------"){
@@ -84,6 +89,7 @@ int main(){
 			}else{
 				student *p = findstudent(allstudents,atof(textline.c_str()));
 				//Append student_list;
+				allcourses[allcourses.size()-1].student_list.push_back();
 			}
 		}
 	}
